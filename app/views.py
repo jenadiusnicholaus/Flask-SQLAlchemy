@@ -1,9 +1,12 @@
 from app import app
 from flask import render_template, request
 from app.forms import ContactForm
+from flask_sqlalchemy import SQLAlchemy
+
 
 @app.route("/")
 def index():
+
     return "Hello world"
 
 @app.route("/register", methods=["GET", "POST"])
@@ -23,9 +26,9 @@ def register():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        name = form.name.data 
-        email = form.email.data   
-        message = form.message.data   
+        name = form.name.data
+        email = form.email.data
+        message = form.message.data
 
         return name + "<br /> " + email + "<br /> " + message
 
